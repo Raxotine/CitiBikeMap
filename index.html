@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html> <!--Your App-->
+  <head>
+    <title>Citi Bike Map - Example</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"></link>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGAzTEMx5j5KsQfgdHgqzHRoYNjjETA0Y&sensor=false"></script>
+  </head>
+  <body>
+
+	<div ng-app="myApp"> 
+    	<my-maps id="map-canvas"></my-maps>
+	</div>
+
+    <script src="myApp.js"></script>
+    <script src="myDirective.js"></script>
+  </body>
+</html>
