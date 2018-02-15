@@ -17,7 +17,7 @@ myApp.directive("myMaps", function(){
 	        var mlng = [];
 
             //Get Citi Bike data
-	       	var promise = $.getJSON("http://feeds.citibikenyc.com/stations/stations.json", function(json) {
+	       	var promise = $.getJSON("https://feeds.citibikenyc.com/stations/stations.json", function(json) {
 			datas = json.stationBeanList;
 			});
 
