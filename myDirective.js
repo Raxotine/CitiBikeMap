@@ -12,27 +12,27 @@ myApp.directive("myMaps", function(){
             3.Build map*/
 
             //Declare Variables
-	        var datas = [];
-	        var mlat = [];
-	        var mlng = [];
+            var CitiBikeData = [];
+            var MapLatitudes = [];
+            var MapLongitudes = [];
 
             //Get Citi Bike data
-	       	var promise = $.getJSON("https://feeds.citibikenyc.com/stations/stations.json", function(json) {
-			datas = json.stationBeanList;
-			});
+            var promise = $.getJSON("https://feeds.citibikenyc.com/stations/stations.json", function(json) {
+            CitiBikeData = json.stationBeanList;
+            });
 
 
                 //Build Map with markers
-    	       	promise.done(function() {
+                promise.done(function() {
 
-    	        for (var x in datas) {
-       				mlat.push(datas[x].latitude);
-       				mlng.push(datas[x].longitude);
-    			}
+                for (var x in CitiBikeData) {
+                    MapLatitudes.push(CitiBikeData[x].latitude);
+                    MapLongitudes.push(CitiBikeData[x].longitude);
+                }
 
-                var myLatLng = new google.maps.LatLng(40.68, -73.95); 
+                var latitudeLongitude = new google.maps.LatLng(40.68, -73.95); 
                 var mapOptions = {
-                    center: myLatLng, 
+                    center: latitudeLongitude, 
                     zoom: 11, 
                     
                     mapTypeId: google.maps.MapTypeId.ROADMAP 
@@ -42,15 +42,14 @@ myApp.directive("myMaps", function(){
                               mapOptions);
 
                 var marker, i;
-                for (i = 0; i < mlat.length; i++) {
-    	            marker = new google.maps.Marker({
-
-    	                position: new google.maps.LatLng(mlat[i], mlng[i]),
-    	                map: map,
-    	            });
-            	}
+                angular.forEach(MapLatitudes, function(value, key) {
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(MapLatitudes[key], MapLongitudes[key]),
+                        map: map,
+                    });
+                });
                 marker.setMap(map); 
-    	       	});
+                });
 
         }   
     };
